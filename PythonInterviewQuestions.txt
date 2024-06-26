@@ -1,0 +1,629 @@
+1.  How Python is an interpreted language?
+ans - The complied language like C, C++, Go uses a complier which converts the entire High level code to Machine level code as a whole before executing the program so that the machine understands it. But, Interpreted language like Pyhon, Bash, Perl, PHP use Interpreter which converts the High Level Code to Machine Level Code line by line during the execution of code. That's the reason the interpreted languages are bit slow compared to compiled languages.
+
+2. What is pep 8?
+Ans: PEP stands for Python Enhancement Proposal. It is a set of rules that specify how to format Python code for maximum readability.  
+
+3. Decorators in Python
+Ans: Adding extra functionality to a function without changing it. It's like you have a function which does a bunch of activity and you need to add some additional work done whenever that function is called but you don't want to change it. That's when the decorator comes to picture. The decorator takes the help of a wrapper function to provide this additional support to the existing functions by wrapping up all the enhanced code for the existing function. We use the @ symbol infront of the decorator while writing it at the top of an existing function. Mostly decorator functions are used in web apps while linking to other functions. 
+
+e.g. 
+						def decorator_func(somefunc):
+								def wrapper_func():
+										print("Before calling the original function")
+										somefunc()
+										print("After calling the original function")
+								return wrapper_func
+						
+						@decorator_func
+						def my_function():
+								print("I'm the function which uses decorator")
+								
+						print(my_function())
+						
+4. List comprehension and Dictionary comprehension
+Ans - # List comprehension
+
+						for i in range(10):
+								print(i)
+# the above code can be written in list comprehension like,
+# ex.1
+                        x = [i for i in range(10)]
+						print(x)
+
+# Dictionary comprehension
+                        obj = {}
+                        for i in range(10):
+								obj[i] = i**2
+						print(obj)
+						print(type(obj)) ## Dict
+# the above code can be written n dict comprehension like, 
+                        obj1 = [{i : i**2} for i in range(10)]
+                        print(obj1)
+                        print(type(obj1)) ## List
+						
+5. .py vs .pyc files
+Ans - When we write the source code the files are stored as .py extension and when the .py files are interpreted by Python interpreter they becomes the .pyc files which are byte codes understandable by machines. 
+
+6. Slicing in python
+Ans - To access the parts of a sequence like lists/tuples/strings. Syntax: [start:end:step]. The 'step' can be ommitted if required. Negative 'i' indicates the 'ith' element from the end.
+e.g. 
+						list1 = [1,2,4,5,6,7,8,9,10]
+						print(list1[1:4:2])     ## Output - [2 , 5]
+						print(list1[::])			 ## Output - [1, 2, 4, 5, 6, 7, 8, 9, 10]
+						print(list1[-10::1])   ## Output - [1, 2, 4, 5, 6, 7, 8, 9, 10]
+						print(list1[-1::-1])	 ## Output - [10, 9, 8, 7, 6, 5, 4, 2, 1]
+						print(list1[-1::-2])	##  Output - [10, 8, 6, 4, 1]
+
+7. Combine dataframes in Pandas?
+Ans - Use 
+				import pandas as pd
+				pd.concat(dataframe1, dataframe2) 
+
+8. How memory is managed in Python?
+Ans - 
+	a. Python has inbuilt memory management as Python private heap space. All python objects and data structures are located in this Python private heap space. The programmer does not have access to this private heap. The python interpreter takes care of this instead.
+	b. The allocation of memory in the heap space is maintained by Python memory manager. The core API gives access to some tools for the programmers to code.
+	c. The inbuilt garbage collector of python makes sure to recycle all the unused memory in python so that they can be used in Python private heap space.
+	
+9. What is PYTHONPATH?
+Ans - It's an environment variable which is queried when we import any module. Whenever a module is imported Python interpreter looks up to this PATH to findout the relevant module.
+
+10. Python modules and common modules.
+Ans - Modules are the python files containing python code. The code can either be functions, classes or variables. The python module is an executable file with .py extension. Common Python modules are like - 
+			a. Os
+			b. Sys
+			c. math
+			d. random
+			e. json
+			f. datetime
+	
+11. What is type conversion in Python?
+Ans: Type conversion refers to the conversion of one data type into another.
+
+			int() – converts any data type into integer type
+
+			float() – converts any data type into float type
+
+			ord() – converts characters into integer
+
+			hex() – converts integers to hexadecimal
+
+			oct() – converts integer to octal
+
+			tuple() – This function is used to convert to a tuple.
+
+			set() – This function returns the type after converting to set.
+
+			list() – This function is used to convert any data type to a list type.
+
+			dict() – This function is used to convert a tuple of order (key, value) into a dictionary.
+
+			str() – Used to convert integer into a string.
+
+			complex(real,imag) – This function converts real numbers to complex(real,imag) number.
+			
+12. Array vs List in python
+Ans - Both are quite same according to their purpose but Array only supports a single type like only integer type or only string type etc.. where as List supports all data types that can be held. 
+e.g. - 
+				import array as arr
+				My_Array=arr.array('i',[1,2,3,4])
+				My_list=[1,'abc',1.20]
+				print(type(My_Array)) ## array class
+				print(type(My_list)) ## list class
+				
+13. What is  __init__?
+Ans- __init__ is a constructor in Python class object concept. Whenever an object is created for a class, this constructor automatically gets called. All classes have this __init__ method. 
+E.g. - 
+		class MyClass:
+				def __init__(self, name, number):
+					self.name = name
+					self.number = number
+		
+		obj = MyClass("Soumya", 8094)
+		print(obj.name)
+		
+14. Lambda function?
+Ans - Annonymous function which can have any number of paramters but only one statement 
+e.g. - 
+			a = lambda x, y : x+y
+			print(a(4, 5))
+
+15. What is 'self' in Python?
+Ans - 'self' refers to the current class. It behaves as an object of the class as well. It's included as a first parameter of the class methods such as __init__ or other class methods. The self variable in init method refers to the newly created object while in other methods it just refers to the object that is calling that class method. 
+
+16. How does break, continue and pass work?
+Ans -
+		break - Whenever any condition met inside the loop and break executes then the loop itself is going to be terminated and the next statement after the loop is going to be executed
+			e.g. - 
+					for i in range(10):
+						if i = 5:
+							break
+						print(i)
+					print("Came out of loop")
+					# output- Print from 0 to 4 and then loop will be terminated
+		continue- Whenever any condition is met inside the loop that part of the loop gets skipped and the control moves back to the starting of the loop.
+			e.g. - 
+					for i in range(10):
+						if i == 5:
+							continue
+						print(i)
+					print("Loop completed with continue statement")
+					# output - Print from 0 to 9 without printing 5 as we skipped with the condition. 
+					
+		pass - Used when you need some block of code syntactically, but you want to skip its execution. This is basically a null operation. Nothing happens when this is executed.
+			e.g. - 
+					def skip():
+						pass
+
+17. How can you randomize the items of a list in Python?
+Ans - By using the 'shuffle' keyword provided by random module. And it changes the original list.
+	e.g. - 
+			from random import shuffle
+			list1 = ['Whatsapp', 'is', 'My', '8093584949', 'Contact', 'Please', 'Directly']
+			shuffle(x)
+			print(x)
+
+18. What are python iterator and how it's different from list?
+Ans - Objects which can be traversed through or iterated upon. A list is a data structure that holds a sequence of values. An iterator is an object that provides an interface to retrieve values one at a time, via the next function.
+	e.g.- 
+			obj = 'bhago'
+			it = iter(obj)
+			print(next(it))
+			print(next(it))
+			print(next(it))
+			print(next(it))
+			print(next(it))
+			
+19. What are the essential part of Python API?
+Ans- 
+	1. API_KEY
+	2. API_URL
+	3. Request
+	4. Response
+	5. Status code
+	6. response.json() (Json works universally as a language of API)
+	7. Parameters for the API request (to pass in the request along with the API_URL)
+	
+20. What are the types of status code we have?
+Ans - 
+	a. 200 Ok: The server has successfully processed your request and data is available as response
+	b. 201 Created: A new resource is created in the server as per your request
+	c. 204 No Content: The request was successful but there are no additional data to return
+	d. 300 Multiple Choices:  The requested resource has multiple representations, each with its own URL
+	e. 302 Found (Temporary redirect): The requested resource is temporarily located at a different URL
+	f. 304 Not modified: The client's cached copy is still valid and no re-download is required.
+	g. 400 Bad request: The request contains invalid data or malformed syntax, making it incomprehensible to the server.
+	h. 401 Unauthorized: Authentication is required and client's credentials (e.g. API KEY) are missing or invalid.
+	i. 500 Internal Server Error: An unexpected server error occured during request processing
+	j. 502 Bad Gateway: Acting as a gateway or proxy, the server received an invalid response from an upstream server.
+	
+21. Difference between range and xrange
+Ans - 
+	a. The range() is applicable for both Python 2.x and 3.x where as the xrange() is deprecated in Python 3.x
+	b. The range() returns a list hence uses memory for storing the list items where as the xrange() returns the xrange object which behaves like a generator and stores only one value at a time using much less memory
+
+22. Comments and Docstring
+Ans - 
+	a. comments - #
+	b. Docstring - Anything inside '''triple quotes'''
+	
+23. Pickling and Unplickling
+Ans -
+	a. Pickling - Python term for serializing any Python object which entails transforming it into a binary representation that can be stored in a file and can be shared over a network. 
+		e.g. - Let's serialize and store a python object i.e. a dictionary.
+			
+			import pickle
+			my_dict = {
+				"Name" : "Soumya",
+				"Age": 31,
+				"Birth Place": "BBSR"
+				}
+			# pickle the object to a binary file
+			with open("File.pickle", "wb") as file:
+				pickle.dump(my_dict, file)
+				
+	b. Unpickling - Python term to deserialize a binary form of an object to it's original form.
+		e.g. - Let's deserialize the above serialized object in to its original dictionary form
+			
+				import pickle
+				
+				with open("File.pickle", "rb") as f:
+					dict_obj = pickle.load(f)
+	
+			print(dict_obj)
+			
+		e.g.2: Let's serialize and deserialize a Python object i.e. a List
+				
+				import pickle
+				
+				list1 = [2,3,5,6,7,9]
+				
+				with open('testfile.pickle', 'wb') as file:    ## 'wb' as we are going to write bytes into this file.
+					pickle.dump(list1, file)   ## now the 'testfile.pickle' contains the byte format for the python object which is ready to be transmitted over network
+				
+				with open('testfile.pickle', 'rb') as readfile:
+					obj = pickle.load(readfile)    ## now the obj contains the original list that was deserialized.
+					
+24. What are generators in Python?
+Ans - Generator is a normal function but with a 'yield' keyword rather than a 'return' statement. It does not return all the results of a loop simulteniously rather dependednt on the next() for returning elements one by one.
+
+25. Make the first letter of a string capital.
+Ans - print("soumya".capitalize())  --> "Soumya"
+
+26. All strings to lowercase.
+Ans - "string".lower()
+
+27. All strings to uppercase
+Ans - "string".upper()
+
+28. What is the usage of help() and dir() in Python?
+Ans - 
+	1. help() --> The help() is used to display the documentation sring as well as some help related to the modules
+	2. Dir() --> The Dir() is used to display the defined symbols
+	
+29. Ternary operator?
+Ans - This is a simple way to operate the if else statement for smaller implementations
+	e.g. 
+				a,b = 9,7
+				min = a if a<b else b
+				print(min)
+	The below is the list of things that is possible using the Ternary operator. For detailed programatical explanation please follow D:\PythonFromUdemy\ternary.py
+	a. 				
+					a = int(input("Enter the value of a: "))
+                    b = int(input("Enter the value of b: "))
+
+                    message = "a and b are similar" if a == b else "a is greater than b" if a > b else "b is greater than a"
+                    print(message)
+	b. Ternary operator with Tuple (Example here: D:\PythonFromUdemy\ternary.py)
+		In case of tuple if the condition is true then Index 1 will be executed as True represents 1 else Index 0 as False represents 0 
+	c. Ternary operator with Dictionary (Example here: D:\PythonFromUdemy\ternary.py)
+		In case of dictionary if the condition is True then whatever value will be there for True that value will be loaded else value for False will be loaded where True and False would have been the keys of the dictionary.
+	d. Ternary operator with Lambda (Example here: D:\PythonFromUdemy\ternary.py)
+		In case of Lambda if the condition is true then Index 1 will be executed as True represents 1 else Index 0 as False represents 0
+	
+30.  Input variable funda?
+Ans - If you want to input some inyteger type varibales via keyboard, then you have to keep do like below becuase the input keyword assumes everything in string.
+		e.g. 
+			a = int(input("Enter a number: "))    ## You will be giving an integer here
+			b = input("Enter a number: ")   ## Here even if you want a number, you did not use int() typecast so, it will take the input as a string and while comparision it will convert the provided input as it's ASCII integer representation. 
+			
+31. What are the limitations in using ternary operator?
+Ans - 
+		1. Readibility - Due to conciseness of this functionality, the ternary operator can be hard to read for simple conditional expression.
+		2. Potential for error -  Sytax errors might come like missing parenthesis or comma like that.
+		3. Debugging - When debugging it might be harder to inspect the values of variables involved in a complex ternary expression.
+		
+32. What do you mean by *args and **kwargs?
+Ans - We use *args when we aren’t sure how many arguments are going to be passed to a function, or if we want to pass a stored list or tuple of arguments to a function. **kwargs is used when we don’t know how many keyword arguments will be passed to a function, or it can be used to pass the values of a dictionary as keyword arguments. The identifiers args and kwargs are a convention, you could also use *bob and **billy but that would not be wise.
+
+33. What is the usecase of negative index ?
+Ans - When you have no idea of the length of the list or string or tuple but you want to grab the last element of the list you can simply use list[-1] and it will give you the last item in the list. You can continue the negative index incrementation to continue fetching the items from the last.
+
+34. What are python packages?
+Ans - Packages contain modules
+
+35. Numpy arrays vs Python lists 
+Ans - 
+	a. Python lists does not support "vectorized" operations like elementwise operations whereas Numpy supports a lots of Vector and Matrix operations for free. 
+	b. Numpy is faster than lists as you get a lots of builtiin functionality like basic statistics, linear algebra, histograms etc..
+	
+36. Deep copy vs Shallow copy
+Ans - 
+	a. Shallow copy is the one which creates a copy of the reference pointers of the value as well so that when we change the shallow copy version of the object then the original object also gets affected.
+		Syntax- copy.copy()
+		
+	b. Deep copy is the one which copy only the value of the object and nothing to do with the reference point where the object is getting stored. So changing the copies object does not affect the original object.
+		Syntax - copy.deepcopy()
+	
+37. What's monkey patch in Python?
+Ans - Monkey patch is the concept in Python which helps modifying the behaviour of a class or module dynamically i.e. changing the behaviour of code at the run time. 
+	e.g. 
+		Let's create a module monk.py and define a function inside it
+			class A:
+				def func(self):
+					print("func() is called inside the monk.py")
+		
+		let's create another file which implements this file as module
+			import monk
+			def func_f(self):
+					print("func_f() is called from the main function")
+			monk.A.func = func_f
+			obj = monk.A()
+			obj.func() ------> output -> "func_f() is called from the main function"  ## We have successfully modified the value of the class function during runtime.
+			
+38. What is the function that is used to refer the objects in the parent class?
+Ans - super()
+
+39. What are the types of inheritance present in Python?
+Ans - There are 5 types of inheritance present in python
+	a. Single inheritance - When a child class inherits from a single parent class it is called single inheritance
+	b. Multiple Inheritance - When a child class inherits from multiple parent classes then it is called multiple inheritance
+	c. Multilevel inheritance - When we have child and grand child relationship. This means that when a child class will inherit from its parent class which in turn is inheriting from its parent class.
+	d. Hierarichical inheritance - More than one derived class can be created from a single base class
+	e. Hybrid inheritance - This is a blend of more than one type of inheritance
+	
+40. Encapsulation in Python.
+Ans - Encapsulation is the fundamental concept of OOPs which means wrapping up data and methods that work on those data in the same unit in order to prevent direct access to the variables and methods. It also helps from accidental modification of data. To prevent accidental change an object's variable can only be changed by the object's method. Those types of variables are known as Private variables.
+	e.g.  A class is an example of encapsulation which encapsulates all the data i.e. member variables and functions etc..
+	
+41. Polymorphism in Python
+And - Same function name many forms with different signatures (like different number of arguments, datatype of the arguments). Sometimes the child class needs to rewrite the implementation for the method that is being inherited from the parent class 
+	e.g. 
+		a. normal len() fucntion
+			print(len("geeks"))
+			print(len([1,2,3,4,5]))
+		b. You write a simple add function and pass multiple number of arguments to it
+		c.  Output of the below function will be all print statements for each object created for each class.
+			class India():
+				def capital(self):
+					print("New Delhi is the capital of India.")
+
+				def language(self):
+					print("Hindi is the most widely spoken language of India.")
+
+				def type(self):
+					print("India is a developing country.")
+
+			class USA():
+				def capital(self):
+					print("Washington, D.C. is the capital of USA.")
+
+				def language(self):
+					print("English is the primary language of USA.")
+
+				def type(self):
+					print("USA is a developed country.")
+
+			obj_ind = India()
+			obj_usa = USA()
+			for country in (obj_ind, obj_usa):
+				country.capital()
+				country.language()
+				country.type()
+
+42. Data abstraction in python.
+Ans - 
+	- Data abstraction is the concept of hiding complex implementation details and exposing only essential functionality to the users. 
+	e.g. 
+		a. A car has an accelerator, clutch and break and we all know that if you press the accelerator it will increase the speed of the car and applying break can stop the car but we don't know the internal machanism of these things to work because those details are hidden and that is abstraction. 
+		
+	- We can achieve data abstraction by using abstract classes and abstract classes can be created by using the abc module (abstract base class) and abstractmethod of abc module. 
+	- Abstract class is a class which contains one or more abstract methods and when a method is declared inside a class without its implementation is known as Abstract method.	
+	
+43. What's an abstraction method?
+Ans - 
+	Abstraction method feature is not a default feature and can be implemented by importing the "ABC" and "abstractmethod" classes from abc (Abstract Base Class) library. The abstract method written in a base class needs to be implemented inside the child class else we will receive the error in our code. 
+
+44. What's a concrete method?
+Ans - 
+	Concrete method is the one which has it's body implemented inside the base class. It's like a normal method written in a normal class which can be extended by the child classes. So, inside abstract class also if you need any method which needs to be reused again and again those methods are concrete method that is written with their body implementation and can be referred by the child classes as per the requirements. 
+	
+45. What is split() used for?
+Ans- The split() used to separate a given string
+	e.g. 
+			a = "I Love Python"
+			print(a.split()) #### results in "I", "Love", "Python"
+			
+46. What is the difference between mutable and immutable data type?
+Ans - Mutable - 
+				a - Data type whose values can be changed
+				b- Retains the same memory allocation even after the content is modified
+				c- List, Dictionary, Sets datatype are mutable
+		Immutable - 
+				a - Data types whose values can not be changed
+				b- Any modification results in new object and new memory location
+				c- Strings, tuple are Immutable
+
+47. What is an ordered dictionary?
+Ans - OrderedDict() is used to maintain the sequence in which keys are added, ensuring that the order is preserved during iteration. In contrast a standard dictionary does not guarentee any specific order when iterated, providing values in arbitrary sequence. It distinguishes itself by retaining the original insertion order of items.
+
+48 - Exception handling in Python.
+Ans- 4 things. try, except, finally and raise 
+			try : Your code block should be kept inside this 'try' block which you think can raise exception
+			except : Here you write all the exceptions which you are expecting the code inside the 'try' block would throw.
+			else: We can have else block only after except block and it executes if there are no exceptions raised in 'try' block.
+			finally : Does not matter if some exceptions are raised or not, this block of code will execute definitely.
+			raise : Force a specific exception to occur
+49- What's the difference between yield and return?
+Ans- 
+	1. Return just send a value and terminates the function to suspend it's execution, while Yield produces a value and retains the function's state allowing it to resume where it left off.
+	2. Code written after Yield statement executes in the next function call while code written after return statement never executes
+	3. Yield can run multiple times while 'return' will run just once
+
+50 - What’s the difference between a set() and a frozenset()?
+Ans-  Set and frozenset are two built-in collection data types in Python that are used to store a collection of unique elements. While set is mutable, meaning that we can add, remove, or change elements in a set, frozenset is immutable and cannot be modified after creation.
+
+51- Difference between Pandas dataframe and series
+Ans- 
+	1. Dataframe can have multiple columns while Series has a single column
+	2. Dataframes can store more comlex and hetrogeneous type of data where Series will store simple and homogeneous data.
+	
+53 - What is the use of __str__() inside a class?
+Ans -  
+	The __str__() returns a human readable or informal string representation for objects of a class. This method is being called by built-in methods like str(), print() and format(). 
+
+54- Difference between / and // in python
+Ans - Single forward slash - '/'
+		Double forward slash - '//'
+		
+		/ used as Division Operator where as // used as Floor Division Operator
+		
+		e.g. 
+			10 / 3 = 3.333333333
+			10 // 3 = 3	
+
+55. Difference between '==' and 'is' operator in python.
+Ans - The '==' is known for comparing the objects based on their values and the 'is' operator is known for comparing the objects based on their identity.
+	e.g.
+		list1 = []
+		list2 = []
+		list3 = list1
+		
+		print(list1 == list2)    ## returns True
+		print(list1 is list2)      ## returns False becuase empty lists have their own id in the memory
+		print(list1 is list3)      ## returns True because both are pointing to the same momory
+	
+56. Write a program to find the common elements of the following lists:
+		List1 = [22, 32, 42, 52, 62, 72, 82]
+		List2 = [30, 32, 34, 36, 38, 40, 42, 44, 46, 48]
+		List3 = [24, 32, 40, 48, 56, 64, 72, 80]	
+Ans - 
+		# method 1
+			print(list(set(List1) & set(List2) & set(List3)))
+
+		# method 2
+			output = [value for value in List1 if value in List2]
+			final_op = [value for value in output if value in List3]
+			print(final_op)
+			
+57. Write  a program to get the second to last element of tuple.
+Ans-
+		print(tuple[-2]) 
+		
+58.  How to delete a file in Python?
+Ans - 
+	a. os.unlink(path) # deletes a file at the path you have provided
+	b. os.rmdir(path)  # deletes an entire directory (the directory must be empty) for the provided path
+	c. shutil.rmtree(path)  # most deangerous and deletes the entire files and folders in the mentioned path. 
+	All these 3 methods are unrecoverable i.e. once deleted, there is no way to retrieve them. 
+	
+	Safe option- 
+		pip install send2trash 
+		import send2trash
+		This module helps delelting the files and send them to trash bin rather than deleting them completely. 
+		
+59. How to move files from one folder to other?
+Ans - You can use the 'shutil' package for this. 
+		shutil.move(<source>, <destination>)
+		
+60. os.walk use?
+Ans - It gives you the details of the folders, subfolders and files inside them for the supplied path.  It works as a generator and sends out data as packed tuple.
+	
+	e.g.
+		for folder, sub_folders, files in os.walk(path):
+			print(f"Currently looking at {folder}")
+			print("\n")
+			print("The subfolders are: ")
+			for sub_folder in sub_folders:
+				print(f"\t subfolder: {sub_folder}")
+			print("\n")
+			print("The files are: ")
+			for f in files:
+				print(f"\t File: {f}")
+			print("\n")
+
+
+61. How do you find out errors in your code?
+Ans - Using Python debugger tool which is an inbuilt function provided by Python. You need to import 'pdb' and use it before the line of the error and use it interactively in order to check on different values using "pdb.set_trace()"
+	
+		e.g. 
+			x = [1,2,3]
+			y = 3
+			z = 2
+
+			print(y+z)
+			
+			pdb.set_trace()
+			
+			print(x+y)
+			
+62. How do you ZIP and UnZIP files in Python?
+Ans- We have generally 2 approaches in Python to ZIP and UnZIP files in Python
+		a- Using zipfile package of Python (Here you have to compress/decompress files one by one and include them inside the zipped folder)
+			e.g. - 
+					import zipfile
+					# compress
+					comp_file = zipfile.ZipFile('comp_file.zip', 'w')  ## Create the zip file first
+					## The below 2 files are present in the directory and we are going to compress them and put them inside the zipped folder
+					comp_file.write('file1.txt', compress_type=zipfile.ZIP_DEFLATED)
+					comp_file.write('file2.txt', compress_type=zipfile.ZIP_DEFLATED)
+					comp_file.close()
+					
+					# decompress
+					zip_obj = zipfile.ZipFile('comp_file', 'r')
+					zip_obj.extractall('extracted')  # Extracting all the files inside the zipped folder to a new unzipped folder
+		
+		b- Using shutil package of Python (Here you can directly compress/decompress the whole folder)
+			e.g. -
+					import shutil
+					
+					# compress entire folder in a single going
+					shutil.make_archive('zipped_file_name', 'zip', 'directory_to_zip')
+					
+					# decompress 
+					shutil.unpack_archive('zipped_file_name.zip', 'unzipped_file_name', 'zip')
+				
+63. What are some of the libraries required for webscrapping?
+Ans- 
+		pip install requests # for requesting the webpages
+		pip install lxml    # for deciphering the information received from the web
+		pip install bs4     # beautiful soup for the pulling of data out of html and xml files
+		
+64. What is the use of bs4 in webscrapping when you receive response?
+Ans - It actually creates a clear view of html files from which we have extracted the information making it clear for which element we want to scrap information for. We use the syntax as,
+			import requests
+			import bs4
+			
+			result = requests.get('<url to grab response>')
+			result.text --> gives you the raw response received from the URL
+			soup = bs4.BeautifulSoup('result.text', 'lxml')  --> Now 'soup' varibale is having the html format of the response received
+			soup.select('<any tag like p, h1, title, a>) --> and this will give you the list of items contained inside those tags including the tags
+			soup.select('<any tag>')[0].getText()     --> will give you only the information enclosed inside those tags excluding the tags
+			
+65. What is the steps followed to read a csv file in Python?
+Ans - 
+		1. Open the file
+		2. csv.reader to read the file
+		3. Reformat it to a python object like list of lists
+		
+66. JSON Serialization and De-serialization ?
+Ans - The process of encoding JSON is usually called serialization. This term refers to the transmission of data into a series of bytes (hence serial) to be stored or transmitted accross a network. This is also known as Marshalling. De-serialization is the reciprocal process of decoding that has been stored or delivered in JSON format. Encoding is writing data into disk and decoding is reading data from memory. 
+
+67. Difference between json.dump() and json.dumps()?
+Ans - json.dump() dumps JSON data into a file while json.dumps() dumps JSON data to a python string object.
+	
+	e.g. 
+	
+		data = {
+			"president": {
+				"name": "Zaphod Beeblebrox",
+				"species": "Betelgeusian"
+			}
+		}
+		
+		with open('data_file.json', 'w') as write_file:
+			json.dump(data, write_file)  # writing the serialized JSON data to a file in the disk
+		
+		json_string = json.dumps(data)  # using serialized JSON data via a python string object
+		
+68. Difference between pickle and JSON?
+Ans - 
+	a- Pickle supports binary serialization format where as JSON supports text serialization format.
+	b- Pickle can serialize python objects like lists, tuple, dictionaries and even classes and methods but JSON can only serialize some of the python objects like lists, dictionaries, boolean, strings, integers, Floats, None.
+	c- JSON is light weight format for data interchange that's why much faster than Pickle.
+	d- JSON is supported by many other languages including Python where as Pickle is designed in C language to support only in Python programming.
+	
+69. Difference between List vs Tuple?
+Ans - 
+	a- Lists are mutable but Tuples are immutable. 
+	b- The list is better for performing operations, such as insertion and deletion where as The tuple is better for accessing the elements i.e. for search operations.
+	c- Tuples are allocated large blocks of memory with lower overhead that lists because they are immutable where as, for lists smaller memory blocks are allocated. Thus tuple seems tobe faster than lists when there is larger number of elements available.
+	d- append(), insert(), remove(), pop(), clear(), sort(), reverse() are not present for Tuple but present for Lists.
+	
+	
+70. What are the built-in methods available for tuple?
+Ans- 
+		index() --> To find out the index of the given value where it's available.
+		count() --> To find out the frequency of occurance of a specified value in a tuple
+		all() -->Return true if all the elements are true or tuple is empty
+		any() --> Return true if any item in the tuple is true. Return False if the tuple is empty
+		len() --> Return the length of the tuple
+		enumerate() --> Returns enumerate object of the tuple
+		max() --> Returns maximum element of a given tuple.
+		min() --> Retuns minimum element of a given tuple
+		sum() --> Returns sum of the numbers in the tuple
+		sorted() --> Input elements in the tuple and return a new sorted list
+		tuple() --> Convert an iterable to a tuple
+		
+		

@@ -1,0 +1,30 @@
+1- Difference between flask and Django
+Ans - 
+
+	a: Django could be a Python-based free, open-source system that takes after the MVT(model view Template) approach of structural design	Flask could be a Python-based smaller-scale system without any set of specific instruments or outside libraries. It too doesn’t have a database layer or arrangements for shape approval and makes utilize of expansions.
+	
+	b: In Django, Urls.py is utilized to set the associated views and templates for a certain route functionality. Which is not the case in Flask. 
+	
+	c: Django follows a Conventional code designing structure(predefined rules, standards and ) where Flask follows an Arbitrary structure.
+	
+	d: Django gives an all-inclusive encounter: you get an admin board, database interfacing, an ORM, and a registry structure for your apps out of the box where Flask gives straightforwardness, adaptability, and fine-grained control.
+	
+	e: Django provides built-in authentication and authorization systems, making it easier to implement user management and access control, where as Flask leaves authentication and authorization to the developer. You can use third-party libraries like Flask-Login and Flask-Principal for these functionalities.
+
+	f: Django is suitable for multi-page applications, where Flask is suitable for single-page applications only.
+	
+2 - Django signals and their types?
+Ans - 
+	Django signals are the concept which helps developers send automatic notifications, updates caches or perform some tasks which is achieved with the 'hooks' that are activated on specific events like creation and deletion of an object. This helps in triggering custom code. These signals are based on the Observer Design Pattern, ensuring a high degree of decoupling between the event producers(senders) and consumers(receivers). 
+	
+	Types of signals	
+		i. pre_save/post_save - Triggered before or after a model instance is saved.
+		ii. pre_delete/post_delete - Triggered before or after a model instance is deleted.
+		iii. pre_init/post_init - Fired before or after a model's __init__ method is called. 
+	
+	Signal arguments
+		i. receiver - The function called when the signal is sent
+		ii. sender - Specifies which sender is sending the signal
+		iii. created - A boolean that indicates if a new record is created
+		iv. instance - The model instance that sent the signal
+		v. kwargs -  additional data that was sent with the signal.
