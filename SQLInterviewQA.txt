@@ -1,0 +1,224 @@
+1. CTE?
+Ans - Common Table Expressions are nothing but the named subqueries which are going to be referenced further in the main query. These are typically known as 'WITH' clauses. 
+	
+		Syntax:
+			WITH subquery_name/cte_name AS
+			(SELECT … subquery ...)
+			SELECT … main query ...
+
+		- Difference between CTE and subqueries?
+		a. CTEs are named subqueries and much more readable than subqueries.
+		b. We can define the body of CTEs as named subqueries and we can call them in our main query whenever we need but incase of subqueries, we need to define them again and again whenever there is a requirement.
+		c. CTEs always appear at the beginning of a query so that it's an added layer of organising the queries. We can divide a big query to smaller parts using CTEs.
+		d. Both CTEs and subqueries take same amount of time for execution purpose but CTEs are more readable than subqueries.
+	
+2.	Common Table Expression in Data analysis. (CTE)
+Ans – 
+		•	CTEs work as virtual tables with records and columns that are created during the execution of a query, used by the query and deleted after the query executes.
+		•	Helps solving complex queries and cleaning data.
+		•	Simplify coding and gives result ASAP.CTE is a temporary table that references to the original table. If the original table has too many columns and we just need some of the columns then we can make CTE containing those required columns.
+		•	It's not a table or VIEW but a result set that is used to help resolving complex subqueries.
+		•	CTE helps Data analysts, data scientists or any other analysts who want to extract their data efficiently and effectively from a table containing big data.
+		•	You can manipulate the base table during the insertion, deletion and update from CTE.
+		•	The CTE can be created using the WITH key word
+		
+						WITH TEMP_CTE AS
+						( <query> )
+							e.g. 
+						WITH CTE_NAME AS
+							(  
+								SELECT column_name1, column_name2,..., column_nameN
+								FROM table_name
+								WHERE condition
+							)
+							SELECT column_name1, column_name2,..., column_nameN 
+							FROM CTE_NAME;
+For more follow this link - https://www.analyticsvidhya.com/blog/2023/03/common-table-expressions-cte-in-sql/
+
+
+3.	PARTITION BY clause?
+Ans – 
+		•	A PARTITION BY clause is used to partition the rows of a table into groups. It is useful when you want to perform some calculation on a particular row of a group using the other rows of that group.
+		•	Rules of using PARTITION BY:
+			o	Can only be used inside OVER() clause.
+			o	The partition formed by the partition clause also known as Window.
+			o	PARTITION BY clause only works on windows functions only. Like – RANK(), LEAD(), LAG() etc.
+			o	If this clause is omitted inside OVER() clause then the whole table is considered to be a single partition. 
+			e.g. 
+				We have to find the rank of hackers in each challenge. That means we have to list all participated hackers of a challenge along with their rank in that challenge.
+				
+			Query: 	
+				select challenge_id, h_id, h_name, score, dense_rank() over ( partition by challenge_id order by score desc ) as "rank", from hacker;
+				
+			Explanation:
+				In the above query, partition by clause will partition table into groups that are having same challenge_id.
+				order by will arrange the hackers of each partition in descending order by “scores”.
+				
+				over() clause defines how to partition and order rows of table, which is to be processed by window function rank().
+				
+				dense_rank() is a window function, which will assign rank in ordered partition of challenges. If two hackers have same scores then they will be assigned same rank.
+				
+4.	Windows function in Data analysis?
+Ans- 
+		•	Windows function apply to aggregate and ranking functions over a particular window(set of rows). OVER clause is used with windows functions to define that 	window. OVER clause does 2 things:
+			a.	Partition rows to form a set of rows. (PARTITION BY clause)
+			b.	Orders rows with in that partition into a particular order. (ORDER BY clause)
+		NOTE: If partitions are not done on the tables then ORDER BY orders all rows of the table. 
+		
+		Syntax:
+				Select column_name1, 
+				Windown_function(column_name2)
+				OVER( [PARTITION BY column_name3] [ORDER BY column_name4]) AS 
+				New column
+				From table_name
+				
+		•	Aggregate windows function: Various aggregate function such as SUM(), MAX(), MIN(), COUNT(), AVERAGE()  applied over a particular window (set of rows) are 	 called aggregate windows function. 
+		•	When windows aggregate functions are used inside OVER() clause along  with PARTITION BY whatever result set is obtained will be different when we add ORDER BY clause along with PARTITION BY clause. 
+		•	Ranking windows functions: Ranking functions are RANK(), DENSE_RANK() & ROW_NUMBER()
+		
+				o	Rank() - As the name suggests, the rank function assigns rank to all the rows within every partition. Rank is assigned such that rank 1 given to the first row and rows having same value are assigned same rank. For the next rank after two same rank values, one rank value will be skipped. For instance, if two rows share - rank 1, the next row gets rank 3, not 2.
+				o	DENSE_RANK() - It assigns rank to each row within partition. Just like rank function first row is assigned rank 1 and rows having same value have same rank. The difference between RANK() and DENSE_RANK() is that in DENSE_RANK(), for the next rank after two same rank, consecutive integer is used, no rank is skipped.
+				o	ROW_NUMBER() - ROW_NUMBER() gives each row a unique number. It numbers rows from one to the total rows. The rows are put into groups based on their values. Each group is called a partition. In each partition, rows get numbers one after another. No two rows have the same number in a partition. This makes ROW_NUMBER() different from RANK() and DENSE_RANK(). ROW_NUMBER() uniquely identifies every row with a sequential integer number. This helps with different kinds of data analysis.
+				
+		NOTE: ORDER_BY() should be specified compulsorily while using rank windows function. 
+		More details on Windows Function - https://www.geeksforgeeks.org/window-functions-in-sql/?ref=lbp
+		
+5.	PIVOT and UNPIVOT in SQL
+Ans – 
+	Pivot and Unpivot are relational operators that are used to transform one table into another in order to achieve more simpler view of the table. Conventionally we can say that Pivot operator converts rows into the columns data. The Unpivot operator does the opposite that, it converts the column based data into rows. 
+
+	More details can be found here - https://www.geeksforgeeks.org/pivot-and-unpivot-in-sql/?ref=lbp
+
+6. LIMIT and OFFSET
+Ans -
+		LIMIT is used to tell the query window to fetch the number of rows from the table where as OFFSET tells the query the particular row number after which you should start fetching that number of rows.
+		
+		e.g. --- SELECT * from <TABLE-NAME> LIMIT 20 OFFSET 40;  ---> Fetches 20 records from 41st Row
+		
+7. How do you get the output of an average function upto 2 decimal?
+Ans - Using NUMERIC
+		Query: 
+			SELECT AVG(prices)::NUMERIC(10,2) FROM products
+			
+8. Difference between LIKE and ILIKE Operator?
+Ans - The LIKE operartor is case sensitive. If you want to do a case insensitive search use ILIKE.
+	
+		e.g.
+		a.  Find the names that contains a letter "A"
+				SELECT * from <Table-name> where name LIKE '%A%'
+		b. Find the names that containes a letter "A" or "a" 
+				SELECT * FROM <Table-name> where name ILIKE '%A%'
+				
+9. The underscore '_' wildcard?
+Ans - The '_' wildcard  represents a single character. It can be any character or number but a single '_' represents only one, and only one, character. 
+
+		e.g. 
+			SELECT * FROM customers
+			WHERE city LIKE 'L_nd__';
+
+10. Joins in PostgreSQL?
+Ans - 
+		INNER JOIN: Returns records that have matching values in both tables
+		LEFT JOIN: Returns all records from the left table, and the matched records from the right table
+		RIGHT JOIN: Returns all records from the right table, and the matched records from the left table
+		FULL JOIN: Returns all records when there is a match in either left or right table
+		CROSS JOIN: Matched all the records from Left table with each of the records from Right table. Returns all the records from Right table for each record in the "left" table. 
+		
+		JOIN and INNER JOIN will give the same result. INNER is the default join type for JOIN, so when you write JOIN the parser actually writes INNER JOIN.	
+		
+		INNER JOIN:
+			e.g. - 
+					SELECT testproduct_id, product_name, category_name
+					FROM testproducts
+					INNER JOIN categories 
+					ON testproducts.category_id = categories.category_id;
+		
+		LEFT JOIN:
+			e.g. - 
+					SELECT testproduct_id, product_name, category_name
+					FROM testproducts
+					LEFT JOIN categories 
+					ON testproducts.category_id = categories.category_id;
+					
+		RIGHT JOIN:
+			e.g. - 
+					SELECT testproduct_id, product_name, category_name
+					FROM testproducts
+					RIGHT JOIN categories 
+					ON testproducts.category_id = categories.category_id;
+					
+		FULL JOIN:
+			e.g. - 
+					SELECT testproduct_id, product_name, category_name
+					FROM testproducts
+					FULL JOIN categories ON testproducts.category_id = categories.category_id;
+							
+		FULL JOIN and FULL OUTER JOIN will give the same result. OUTER is the default join type for FULL JOIN, so when you write FULL JOIN the parser actually writes FULL OUTER JOIN.
+		
+		CROSS JOIN:
+			e.g. - 
+					SELECT testproduct_id, product_name, category_name
+					FROM testproducts
+					CROSS JOIN categories;
+		Let's say that we have 10 rows in the testproducts table and 8 rows in the categories table. So, this join returns 10*8 = 80 rows. 
+
+11. Use of UNION operator and difference between UNION and UNIONALL?
+Ans - UNION operator is used to combine the results of 2 or more queries.
+	
+		rules for UNION:
+				a. They must have same number of columns
+				b. The columns must have same datatype
+				c. The columns must be in same order
+				
+		UNION ALL supports duplicate values to be returned from both of the queries where as UNION returns only one entry of duplicate values resulted in both of the queries, in the output of UNION.
+		
+12. Use of HAVING clause in PostgreSQL?
+Ans - HAVING clause was added in SQL because the WHERE clause cannot be used with aggregate functions like AVG(), SUM(), MIN(), MAX(), COUNT() etc.. Aggregate functions are often used with GROUP BY clauses and by adding HAVING we can write condition like we do with WHERE clauses.
+
+	e.g. -
+			SELECT COUNT(customer_id), country
+			FROM customers
+			GROUP BY country
+			HAVING COUNT(customer_id) > 5;
+			
+13. CASE in PostgreSQL?
+Ans - CASE expression goes through conditions and returns a value when the first condition is met(like an if-else statement). Once a condition is true, it will stop reading and return the result. If no conditions are true, it returns the value in the ELSE clause. If there is no ELSE part and no conditions are true, it returns NULL.
+
+	e.g.- 
+			SELECT product_name,
+			CASE
+			  WHEN price < 10 THEN 'Low price product'
+			  WHEN price > 50 THEN 'High price product'
+			ELSE
+			  'Normal product'
+			END AS "price category"
+			FROM products;
+			
+14. EXISTS operator in PostgreSQL?
+Ans- The EXISTS operator is used to test for the existence of any record in a sub query. The EXISTS operator returns TRUE if the sub query returns one or more records.
+
+	e.g. 
+		SELECT customers.customer_name
+		FROM customers
+		WHERE EXISTS (
+			  SELECT order_id
+			  FROM orders
+			  WHERE customer_id = customers.customer_id
+		);
+
+15. Difference between ANY and ALL ?
+Ans - 
+	a. ANY means that the condition will be true if the operation is true for any of the values in the range where as ALL means that the codition will be true if the operarion is true for all of the values in the range.
+	b. Returns TRUE if ANY of the sub query values meet the condition where as ALL returns TRUE if ALL of the sub query values meet the condition else FALSE.
+	
+		e.g. 
+			This will return nothing as not ALL the order quantity is more than 10. But, if we use ANY here incase of ALL, we will definitely get some results. 
+				SELECT product_name
+				FROM products
+				WHERE product_id = ALL (
+					  SELECT product_id
+					  FROM order_details
+					  WHERE quantity > 10
+				);
+
+	
