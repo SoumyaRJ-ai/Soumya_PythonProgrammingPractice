@@ -625,5 +625,71 @@ Ans-
 		sum() --> Returns sum of the numbers in the tuple
 		sorted() --> Input elements in the tuple and return a new sorted list
 		tuple() --> Convert an iterable to a tuple
+
+71. What is the use of enumerate in Python?
+Ans- The enumerate() method adds a counter to an iterable and returns it in the form of enumerating object. We can use this function to loop through the iterable objects like list, tuple etc..
+
+		list1 = [100,99,43,52,87]
+		tuple1 = (200, 220, 323, 432, 221)
+		for i, j in enumerate(list1):
+		    print(f"{i}: {j}")
 		
+		print(list(enumerate(list1)))  ## [(0, 100), (1, 99), (2, 43), (3, 52), (4, 87)]
+		print(tuple(enumerate(list1))) ## ((0, 100), (1, 99), (2, 43), (3, 52), (4, 87))
+		print(dict(enumerate(list1)))  ## {0: 100, 1: 99, 2: 43, 3: 52, 4: 87}
+		
+		print(list(enumerate(tuple1)))  ## [(0, 200), (1, 220), (2, 323), (3, 432), (4, 221)]
+		print(tuple(enumerate(tuple1)))	## ((0, 200), (1, 220), (2, 323), (3, 432), (4, 221))
+		print(dict(enumerate(tuple1)))  ## {0: 200, 1: 220, 2: 323, 3: 432, 4: 221}
+
+72. How to start enumerate at 1?
+Ans - Using the 'start' parameter inside the enumerate().
+
+	my_list = ['apple', 'banana', 'cherry']
+	for index, value in enumerate(my_list, start=1):
+	    print(index, value)
+	Output:
+	1 apple
+	2 banana
+	3 cherry
+
+73. What are permutations in Python?
+Ans - Permutations are the combination of the elements present in a iterable object like list and tuple. It needs to be imported from itertools package. Optionally it can take a parameter of length of the each combination you want after the permutations of all list items.
+   e.g.1 (Without length parameter)
+	from itertools import permutations
+	for i in permutations([2,3, 5]):
+		print(i)
+	o/p:
+		(2, 3, 5)
+		(2, 5, 3)
+		(3, 2, 5)
+		(3, 5, 2)
+		(5, 2, 3)
+		(5, 3, 2)
+   e.g.2 (With length parameter)
+	for i in permutations([2,3,5], 2):
+		print(i)
+	o/p:
+		(2, 3)
+		(2, 5)
+		(3, 2)
+		(3, 5)
+		(5, 2)
+		(5, 3)
+
+74. Combinations in Python?
+Ans - Combinations in Python seems like the same as permutations but they don't repeat the elements like if one combination is there like (1,2) then another combination can't be (2,1) which was possible in permutations. And, it's mandatory for combinations to have that 2nd argument for number of elements that each combination needs to have.
+	e.g: 
+		from itertools import combinations
+
+		list1 = [2, 3, 5]
+		for i in combinations(list1, 2):
+		    print(i)
+	o/p:
+		(2, 3)
+		(2, 5)
+		(3, 5)
+
+75. 
+
 		
