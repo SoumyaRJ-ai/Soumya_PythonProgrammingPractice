@@ -690,6 +690,44 @@ Ans - Combinations in Python seems like the same as permutations but they don't 
 		(2, 5)
 		(3, 5)
 
-75. 
+75. Map, Filter and Reduce in Python?
+Ans -  These three operations are paradigms of functional programming. They allow one to write simpler, shorter code without needing to bother about intricacies like loops and branching.
 
+	When the interviewer asks something to be done without the use of loops, these functions should be considered.
+
+	Map - map() returns a map object (which is an iterator) of the results after applying the given function to each item of a given 	iterable (list, tuple etc..)
+	Syntax - map(func, iter)
+	e.g. -
+		def double(n):
+		    return n * 2
+		    
+		list2 = [2,3,4,5,6]
+		result = map(double, list2)
+		print(result)  ## Prints the o/p of the memory location after applying map
+		print(type(result))  ## <class 'map'>
+		print(list(result))  ##  [4,6,8,10,12]
+
+	Reduce - reduce() is used to apply a particular function passed in its argument to all of the list elements mentioned in the 		sequence passed along as a parameter of reduce(). Returns a single result of the operation performed on the iterable object.
+	Syntax - reduce(func, iterable)
+	e.g. - 
+		import functools
+		list2 = [1,2,4,5]
+		result = functools.reduce(lambda x,y: x*y , list2)
+		print(result)  ## 40
+
+	Filter - filter() uses the supplied method and applies to the given sequence to test if each element of the sequence to be true 	or not. Sequences can be sets, lists, tuples or containers of any iterators. It only returns the elements which are true as a 		part an iterable object. 
+	Syntax - filter(func, sequence)
+	e.g. - 
+		def even(n):
+		    return n % 2 == 0
+		
+		numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+		
+		even_numbers = filter(even, numbers)
+		print(even_numbers)   ## Memory of the results
+		print(type(even_numbers))  ## <class 'filter'>
+		print(list(even_numbers))  ## [2, 4, 6, 8, 10]
+        
+76. Difference between map, filter and reduce?
+Ans - 'map' method takes a function and a iterator as paramaters and applies that function to each item of that iterator and returns another iterator of the results. 'reduce' is imported from 'functools' and takes a function and a list as parameters and applies that function to all the items in that list to give a calculated result of those items. 'filter' takes a function and a sequence as its parameter and applies that function to the each element of that sequence to find out if those elements are true to that function condition and returns a iterable object with only elements which came 'true'. 
 		
