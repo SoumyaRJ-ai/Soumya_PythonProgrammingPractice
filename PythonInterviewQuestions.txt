@@ -730,4 +730,17 @@ Ans -  These three operations are paradigms of functional programming. They allo
         
 76. Difference between map, filter and reduce?
 Ans - 'map' method takes a function and a iterator as paramaters and applies that function to each item of that iterator and returns another iterator of the results. 'reduce' is imported from 'functools' and takes a function and a list as parameters and applies that function to all the items in that list to give a calculated result of those items. 'filter' takes a function and a sequence as its parameter and applies that function to the each element of that sequence to find out if those elements are true to that function condition and returns a iterable object with only elements which came 'true'. 
-		
+
+77. WHat are the available built-in functions for list?
+Ans -
+	append() --->	Adds an element at the end of the list
+	clear()	 --->	Removes all the elements from the list
+	copy()	 --->	Returns a copy of the list
+	count()	 --->	Returns the number of elements with the specified value
+	extend() --->	Add the elements of a list (or any iterable), to the end of the current list
+	index()	 --->	Returns the index of the first element with the specified value
+	insert() --->	Adds an element at the specified position
+	pop()	 --->	Removes the element at the specified position
+	remove() --->	Removes the first item with the specified value
+	reverse()--->	Reverses the order of the list
+	sort()	 --->	Sorts the list
