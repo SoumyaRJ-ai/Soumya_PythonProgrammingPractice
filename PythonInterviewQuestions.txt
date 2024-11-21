@@ -744,3 +744,18 @@ Ans -
 	remove() --->	Removes the first item with the specified value
 	reverse()--->	Reverses the order of the list
 	sort()	 --->	Sorts the list
+
+78. Scenario based python program. 
+Dynamically construct an SQL query based on the presence of paramaters passed tp the API. 
+key elements:
+	base_query = "SELECT * FROM your_table WHERE 1=1"
+	conditions = []
+	values = []
+	for column, value in params.items():
+		if value is not None:
+			conditions.append(f"{column}" = ? ")
+			values.append(value)
+	if conditions:
+		base_query += " AND " + " AND ".join(conditions)
+
+	cursor.execute(base_query)
