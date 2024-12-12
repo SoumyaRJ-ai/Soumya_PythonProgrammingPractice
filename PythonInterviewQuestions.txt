@@ -759,3 +759,10 @@ key elements:
 		base_query += " AND " + " AND ".join(conditions)
 
 	cursor.execute(base_query)
+
+79. .formkeys
+x = ['a', 'b', 'b', 'a']
+y = ['Dog', 'Cat', 'Cat', 'Dog']
+
+thisdict = dict.fromkeys(x, y)
+output = dictionary of each key of x with respect to the entire data of y. {'a' : ['Dog', 'Cat', 'Dog', 'Cat'], 'b': {['Dog', 'Cat', 'Dog', 'Cat']}..}
