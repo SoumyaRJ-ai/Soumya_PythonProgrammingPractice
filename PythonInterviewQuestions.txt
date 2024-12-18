@@ -766,3 +766,5 @@ y = ['Dog', 'Cat', 'Cat', 'Dog']
 
 thisdict = dict.fromkeys(x, y)
 output = dictionary of each key of x with respect to the entire data of y. {'a' : ['Dog', 'Cat', 'Dog', 'Cat'], 'b': {['Dog', 'Cat', 'Dog', 'Cat']}..}
+
+80. Difference between append and extend in python.
